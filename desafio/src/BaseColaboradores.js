@@ -23,4 +23,4 @@ export const BaseColaboradores = [
         cargo: "Ingeniero DevOps",
         telefono: "99226644"
     }, 
-]
+];

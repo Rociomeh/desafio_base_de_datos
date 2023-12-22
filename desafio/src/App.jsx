@@ -6,6 +6,7 @@ import { BaseColaboradores as InitialBaseColaboradores } from './BaseColaborador
 // import  colaboradores from './BaseColaboradores'
 import './App.css';
 import Formulario from './components/Formulario';
+import Alert from './components/Alert';
 
 function App() {
 

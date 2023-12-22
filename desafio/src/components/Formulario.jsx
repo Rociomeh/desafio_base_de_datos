@@ -1,5 +1,6 @@
 import { BaseColaboradores } from "../BaseColaboradores";
 import React,{ useState } from 'react';
+import Alert from './Alert'
 
 
 export default function Formulario({agregarColaborador}) {
@@ -36,11 +37,11 @@ export default function Formulario({agregarColaborador}) {
         setEdad("");
         setCargo("");
         setTelefono("");
-
     };
 
     return(
         <>
+        <h2>Agregar colaborador</h2>
         <form className = "formulario" onSubmit={handleSubmit}>
             <div className="form-group">
                     <input className = "form-control" 
@@ -78,6 +79,4 @@ export default function Formulario({agregarColaborador}) {
         </form>
         </>
     )
-
-
 }
