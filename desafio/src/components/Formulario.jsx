@@ -1,8 +1,11 @@
 import { BaseColaboradores } from "../BaseColaboradores";
-import React,{ useState } from 'react';
+import { useState } from 'react';
 
 export default function Formulario({agregarColaborador, setErrorV, setSuccess}) {
 
+    const validName = /^[a-zA-Z]+$/;
+    const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
+    const validNumber = /^[0-9]+$/;
 
     const [nombre, setNombre] = useState("");
     const [correo, setCorreo] = useState("");
@@ -20,8 +23,31 @@ export default function Formulario({agregarColaborador, setErrorV, setSuccess}) 
             setErrorV("Faltan datos en el formulario");
             setSuccess(""); 
             return; 
+        }else if(!validName.test(nombre)){
+            setErrorV('Nombre Invalido')
+            setSuccess('')
+            return; 
+        }else if(!validEmail.test(correo)){
+            setErrorV('Correo Invalido')
+            setSuccess('')
+            return;
+        }else if(!validNumber.test(edad)){
+            setErrorV('Edad Invalida')
+            setSuccess('')
+            return;
+        }else if(edad > 100){
+            setErrorV('No comple el rango de edad')
+            setSuccess('')
+            return;
+        }else if(!validNumber.test(telefono)){
+            setErrorV('Telefono invalido')
+            setSuccess('')
+            return;
+        }else if(telefono.length < "7"){
+            setErrorV('Ingresa un numero de telefono valido')
+            setSuccess('')
+            return;
         }
-
         setErrorV("");
         setSuccess("Registro exitoso");
     
@@ -62,7 +88,7 @@ export default function Formulario({agregarColaborador, setErrorV, setSuccess}) 
                             placeholder = "Ingresar correo"/>
                     <br></br>
                     <input className = "form-control" 
-                            type="number" 
+                            type="text" 
                             name = "Edad" 
                             onChange = {(e) => setEdad(e.target.value)} 
                             placeholder = "Ingresar edad"/>
