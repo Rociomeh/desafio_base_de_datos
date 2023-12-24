@@ -1,11 +1,9 @@
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
 
+export default function Listado({baseColaboradores }) {
 
-export default function Listado({ baseColaboradores }) {
     return (
         <>
-            <h1>Lista de colaboradores</h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>

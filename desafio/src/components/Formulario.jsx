@@ -1,5 +1,6 @@
 import { BaseColaboradores } from "../BaseColaboradores";
 import { useState } from 'react';
+import Alert from 'react-bootstrap/Alert';
 
 export default function Formulario({agregarColaborador, setErrorV, setSuccess}) {
 
@@ -43,7 +44,7 @@ export default function Formulario({agregarColaborador, setErrorV, setSuccess}) 
             setErrorV('Telefono invalido')
             setSuccess('')
             return;
-        }else if(telefono.length < "7"){
+        }else if(telefono.length < "8"){
             setErrorV('Ingresa un numero de telefono valido')
             setSuccess('')
             return;

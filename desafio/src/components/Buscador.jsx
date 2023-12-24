@@ -21,15 +21,14 @@ export default function Buscador({ colaboradores, setColaboradoresFiltrados }) {
   };
 
   return (
-    <div>
-      <h2>Buscador de Colaboradores</h2>
+    <div className='buscador'>
       <form onSubmit={(e) => e.preventDefault()}>
         <input
           type="text"
           name="busqueda"
           value={busqueda}
           onChange={handleInputChange}
-          placeholder="Ingresa un dato"
+          placeholder="Busca un colaborador"
         />
       </form>
     </div>

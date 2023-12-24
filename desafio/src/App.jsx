@@ -22,13 +22,18 @@ function App() {
         setBaseColaboradores([...baseColaboradores, nuevoColaborador]);
     };
 
+
     return (
-        <>
+        <section className='page'>
+        <div>
+            <h1>Lista de colaboradores</h1>
             <Buscador 
                 colaboradores={baseColaboradores} 
                 setColaboradoresFiltrados={setColaboradoresFiltrados}
             />
             <Listado baseColaboradores={colaboradoresFiltrados}/>
+        </div>
+        <div>
             <Formulario 
                 agregarColaborador={agregarColaborador}
                 setErrorV={setErrorV} 
@@ -37,8 +42,9 @@ function App() {
             <Alert
             errorV={errorV}
             success={success}
-        />
-    </>
+            />
+        </div>
+        </section>
     );
 }
 
