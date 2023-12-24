@@ -1,62 +1,37 @@
 import React, { useState } from 'react';
 
-function Buscador({ colaboradores, setColaboradores }) {
-  const [busqueda, setBusqueda] = useState({
-    nombre: '',
-    correo: '',
-    edad: '',
-    // Agrega más campos de búsqueda según tus necesidades
-  });
+export default function Buscador({ colaboradores, setColaboradoresFiltrados }) {
+  const [busqueda, setBusqueda] = useState('');
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setBusqueda({
-      ...busqueda,
-      [name]: value,
-    });
-  };
+    const valorBusqueda = event.target.value;
+    setBusqueda(valorBusqueda);
 
-  const buscarColaboradores = () => {
-    // Filtrar colaboradores basados en los campos de búsqueda
-    const colaboradoresFiltrados = colaboradores.filter((colaborador) => {
-      const { nombre, correo, edad } = colaborador;
-      const { nombre: busquedaNombre, correo: busquedaCorreo, edad: busquedaEdad } = busqueda;
-
-      // Aplica las condiciones de búsqueda (puedes personalizarlas)
-      return (
-        nombre.toLowerCase().includes(busquedaNombre.toLowerCase()) &&
-        correo.toLowerCase().includes(busquedaCorreo.toLowerCase()) &&
-        (busquedaEdad === '' || edad >= parseInt(busquedaEdad, 10))
+    if (valorBusqueda === '') {
+      setColaboradoresFiltrados(colaboradores);
+    } else {
+      const terminoDeBusqueda = valorBusqueda.toLowerCase();
+      const filtrados = colaboradores.filter((colaborador) =>
+        Object.values(colaborador).some(valor =>
+          String(valor).toLowerCase().includes(terminoDeBusqueda)
+        )
       );
-    });
-
-    // Actualizar el estado de los colaboradores con los resultados de la búsqueda
-    setColaboradores(colaboradoresFiltrados);
+      setColaboradoresFiltrados(filtrados);
+    }
   };
 
   return (
     <div>
       <h2>Buscador de Colaboradores</h2>
-      <form>
-        <div>
-          <label>Nombre:</label>
-          <input type="text" name="nombre" value={busqueda.nombre} onChange={handleInputChange} />
-        </div>
-        <div>
-          <label>Correo:</label>
-          <input type="text" name="correo" value={busqueda.correo} onChange={handleInputChange} />
-        </div>
-        <div>
-          <label>Edad:</label>
-          <input type="number" name="edad" value={busqueda.edad} onChange={handleInputChange} />
-        </div>
-        {/* Agrega más campos de búsqueda aquí */}
-        <button type="button" onClick={buscarColaboradores}>
-          Buscar
-        </button>
+      <form onSubmit={(e) => e.preventDefault()}>
+        <input
+          type="text"
+          name="busqueda"
+          value={busqueda}
+          onChange={handleInputChange}
+          placeholder="Ingresa un dato"
+        />
       </form>
     </div>
   );
 }
-
-export default Buscador;
