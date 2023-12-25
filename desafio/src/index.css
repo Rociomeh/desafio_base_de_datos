@@ -66,3 +66,35 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+#root{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.page{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.buscador input{
+  width: 50%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  border: 1px solid gray;
+  padding-left: 10px;
+}
+.alert{
+  margin-top: 10px;
+}
+.alert p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+.formulario button{
+  width: 100%;
+}
